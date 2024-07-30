@@ -5,8 +5,8 @@ WORKDIR /app
 
 # ライブラリインストール
 COPY requirements.txt .
-#RUN pip3 install --no-cache-dir --upgrade -r /app/requirements.txt
-RUN pip3 install -r /app/requirements.txt
+RUN pip3 install --no-cache-dir --upgrade -r /app/requirements.txt
+# RUN pip3 install -r /app/requirements.txt
 
 COPY ./app/ .
 
