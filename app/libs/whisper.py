@@ -1,18 +1,10 @@
 from faster_whisper import WhisperModel
 from libs.cache import getCache, saveCache
-# import torch
+import torch
 import subprocess
 
 from libs.cache import getCache, saveCache
 
-def check_gpu():
-    try:
-        result = subprocess.run(['nvidia-smi'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        if result.returncode == 0:
-            return "GPU"
-    except FileNotFoundError:
-        pass
-    return "CPU"
 
 async def youtube_whisper(video_id: str):
     """
@@ -27,8 +19,7 @@ async def youtube_whisper(video_id: str):
 
         video_file_path = await downloadAudio(video_id=video_id)
         model_size = "large-v3"
-        # MODE = "GPU" if torch.cuda.is_available() else "CPU"
-        MODE = check_gpu()
+        MODE = "GPU" if torch.cuda.is_available() else "CPU"
 
         # Run on GPU with FP16
         if MODE == "GPU":

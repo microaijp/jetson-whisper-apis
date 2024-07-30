@@ -11,6 +11,7 @@ apscheduler = "*"
 aioredis = "*"
 faster-whisper = "*"
 pytubefix = "*"
+torch = "*"
 
 [dev-packages]
 pytest = "*"
