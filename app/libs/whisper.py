@@ -1,7 +1,8 @@
 from faster_whisper import WhisperModel
 from libs.cache import getCache, saveCache
-import torch
-import subprocess
+# import torch
+# import subprocess
+import os
 
 from libs.cache import getCache, saveCache
 
@@ -19,8 +20,8 @@ async def youtube_whisper(video_id: str):
 
         video_file_path = await downloadAudio(video_id=video_id)
         model_size = "large-v3"
-        MODE = "GPU" if torch.cuda.is_available() else "CPU"
-
+        # MODE = "GPU" if torch.cuda.is_available() else "CPU"
+        MODE = os.getenv("MODE")
         # Run on GPU with FP16
         if MODE == "GPU":
             model = WhisperModel(model_size, device="cuda", compute_type="float16")
