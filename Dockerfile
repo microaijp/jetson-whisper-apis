@@ -1,4 +1,4 @@
-FROM ghcr.io/microaijp/microaifasterwhisper_base:latest AS base
+FROM ghcr.io/microaijp/jetson-faster-whisper:latest AS base
 
 # コンテナ上のベースディレクトリ
 WORKDIR /app
