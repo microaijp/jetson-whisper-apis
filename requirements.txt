@@ -3,5 +3,4 @@ fastapi
 uvicorn
 apscheduler
 aioredis
-faster-whisper
 pytubefix
